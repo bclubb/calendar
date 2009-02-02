@@ -2,7 +2,19 @@
 class Calendar
   attr_reader :events
   
-  def add_event(date)
-    @events << date
+  def initialize
+    @events = {}
+  end  
+  
+  def add_event(date, name)
+    if(@events[date])
+      @events[date] << name
+    else
+      @events.merge!(date => Array[name])
+    end
+  end
+  
+  def get_events(date)
+    @events[date]
   end
 end
