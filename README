@@ -56,6 +56,7 @@ Beyond that, the event types differ as follows:
 
 * Daily events also have no additional fields.  They recur each day  
 between their start date and end date.
+
 * Weekly events have a frequency field (an Integer) that defaults to  
 one and a list of days (an Array containing one or more Strings from  
 the set:  "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",  
@@ -66,6 +67,7 @@ divisible by the frequency when counted as an offset from the start
 date.  For example, a frequency of two means an event occurs every  
 other week and thus would appear within the first seven days of the  
 start date, skip the next seven, appear in the next seven, etc.
+
 * Monthly events can be set two ways.  The first type of monthly event  
 has a frequency field (same as the weekly version, but in the scope of  
 months), an "on the" field (a String from the set:  "first", "second",  
@@ -74,6 +76,7 @@ mentioned in the weekly events days field).  Again, this date recurs
 monthly bounded by the start and end date and as dictated by the  
 frequency.  The difference here is that the "on the" and day fields  
 indicate which day of the month the event happens on.
+
 * If the "on the" and day fields are omitted, you have the second type  
 of monthly event.  This event just repeats on the same day of the  
 month as the start date (if present in the current month).  These too  
