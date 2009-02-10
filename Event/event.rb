@@ -6,7 +6,7 @@ class Event
   attr_reader :start_time
   attr_accessor :end_time
   
-  def initialize(name, start_time, end_time=Time.now<<24)
+  def initialize(name, start_time, end_time=Time.now)
     @name = name
     @start_time = start_time
     @end_time = end_time
@@ -16,17 +16,24 @@ end
 module Weekly
   attr_accessor :frequency
   
-  def next_date(previous_date)
+  def next_date
+    if(!@previous_time)
+      @previous_time = @start_time
+      return @previous_time
+    end
+    
     case @frequency
       when "first"
-        return previous_date+7
+        @previous_time = @previous_time+7
       when "second"
-        return previous_date+14
+        @previous_time = @previous_time+14
       when "third"
-        return previous_date+21
+        @previous_time = @previous_time+21
       when "last"
-        return previous_date+28
+        @previous_time = @previous_time+28
     end
+    
+    return @previous_time
   end
 end
 
