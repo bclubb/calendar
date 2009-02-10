@@ -1,12 +1,11 @@
 # spec/event_spec.rb
 require 'Event/event'
-require 'date'
+require 'time'
 
-#
 describe "Any event" do
   
   before(:each) do
-    @event = Event.new("Cake Cookout", Date.new(y=2008,m=3,d=22))
+    @event = Event.new("Cake Cookout", Time.new(y=2008,m=3,d=22))
   end
   
   it "should have a name" do
@@ -21,24 +20,17 @@ describe "Any event" do
     @event.should respond_to(:end_time)
   end
   
-  it "should have to have a start time" do
-    pending
-  end
-  
-  it "should have to have a name" do
-    pending
-  end
-  
   it "should not have to have an end time" do
     pending
   end
 end
     
     
-describe "A Periodic Event" do
+describe "A Weekly Event" do
   before(:each) do
-    
+    @event = Event.new("weekly cookout", Time.new(y=2008,m=3,d=22))
   end
+  
   it "should have a frequency" do
     
   end

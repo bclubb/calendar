@@ -1,19 +1,17 @@
 # event.rb
-require "enumerator"
+require 'time'
 
 class Event
   attr_reader :name
   attr_reader :start_time
   attr_accessor :end_time
   
-  def initialize(name, start, end_date)
+  def initialize(name, start_time, end_time=Time.now<<24)
     @name = name
-    @start_time = start
-    @end_time = end_date
+    @start_time = start_time
+    @end_time = end_time
   end
 end
-
-
 
 module Weekly
   attr_accessor :frequency
@@ -29,13 +27,14 @@ module Weekly
       when "last"
         return previous_date+28
     end
+  end
 end
 
 module Monthly
   attr_accessor :frequency
   
   # right now this won't work.  It will just do the first one of the month and move on
-  def next_date(previous_date, days_of_the_week)
+  def next_Date(previous_date, days_of_the_week)
     next_date = previous_date>>1
     last_week_start = Time::CommonYearMonthDays[next_date.month] - 7
     case @frequency
@@ -60,4 +59,5 @@ end
 module Yearly
   def next_date(previous_date)
     return previous_date<<12
+  end
 end
