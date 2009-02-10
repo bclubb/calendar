@@ -5,7 +5,7 @@ require 'time'
 describe "Any event" do
   
   before(:each) do
-    @event = Event.new("Cake Cookout", Time.new(y=2008,m=3,d=22))
+    @event = Event.new("Cake Cookout", Time.local(y=2008,m=3,d=22,h=12,min=34,s=43))
   end
   
   it "should have a name" do
@@ -28,7 +28,7 @@ end
     
 describe "A Weekly Event" do
   before(:each) do
-    @event = Event.new("weekly cookout", Time.new(y=2008,m=3,d=22))
+    @event = Event.new("weekly cookout", Time.local(y=2008,m=3,d=22,h=12,min=34,s=43))
   end
   
   it "should have a frequency" do
