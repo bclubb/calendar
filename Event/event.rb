@@ -3,13 +3,13 @@ require 'time'
 
 class Event
   attr_reader :name
-  attr_reader :start_time
-  attr_accessor :end_time
+  attr_reader :start_date
+  attr_accessor :end_date
   
-  def initialize(name, start_time, end_time=Time.now)
+  def initialize(name, start_date, end_date=Date.today<<24)
     @name = name
-    @start_time = start_time
-    @end_time = end_time
+    @start_date = start_date
+    @end_date = end_date
   end
 end
 
@@ -17,23 +17,24 @@ module Weekly
   attr_accessor :frequency
   
   def next_date
-    if(!@previous_time)
-      @previous_time = @start_time
-      return @previous_time
+    
+    if(!@previous_date)
+      @previous_date = @start_date
+      return @previous_date
     end
     
     case @frequency
       when "first"
-        @previous_time = @previous_time+7
+        @previous_date = @previous_date+7
       when "second"
-        @previous_time = @previous_time+14
+        @previous_date = @previous_date+14
       when "third"
-        @previous_time = @previous_time+21
+        @previous_date = @previous_date+21
       when "last"
-        @previous_time = @previous_time+28
+        @previous_date = @previous_date+28
     end
     
-    return @previous_time
+    return @previous_date
   end
 end
 
