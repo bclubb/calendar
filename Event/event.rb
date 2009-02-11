@@ -13,15 +13,24 @@ class Event
   end
 end
 
+module Daily
+  def next_date
+    return @start_date
+  end
+end
+
 module Weekly
   attr_accessor :frequency
+  attr_accessor :week_days
   
   def next_date
-    
     if(!@previous_date)
       @previous_date = @start_date
       return @previous_date
     end
+    
+    #box in the week, if out of a valid week the progress to the next valid week
+    
     
     case @frequency
       when 1
@@ -44,7 +53,12 @@ module Monthly
   
   # right now this won't work.  It will just do the first one of the month and move on
   def next_date
-    next_date = previous_date>>1
+    if(!@previous_date)
+      @previous_date = @start_date
+      return @previous_date
+    end
+    
+    previous = @previous_date>>1
     last_week_start = Time::CommonYearMonthDays[next_date.month] - 7
     case @frequency
       when "first"
