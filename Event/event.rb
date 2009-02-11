@@ -24,13 +24,13 @@ module Weekly
     end
     
     case @frequency
-      when "first"
+      when 1
         @previous_date = @previous_date+7
-      when "second"
+      when 2
         @previous_date = @previous_date+14
-      when "third"
+      when 3
         @previous_date = @previous_date+21
-      when "last"
+      when 4
         @previous_date = @previous_date+28
     end
     
@@ -40,9 +40,10 @@ end
 
 module Monthly
   attr_accessor :frequency
+  attr_accessor :days_of_the_week
   
   # right now this won't work.  It will just do the first one of the month and move on
-  def next_Date(previous_date, days_of_the_week)
+  def next_date
     next_date = previous_date>>1
     last_week_start = Time::CommonYearMonthDays[next_date.month] - 7
     case @frequency
