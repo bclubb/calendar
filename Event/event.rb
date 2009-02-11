@@ -15,7 +15,15 @@ end
 
 module Daily
   def next_date
-    return @start_date
+    if(!@previous_date)
+      @previous_date = @start_date
+      return @previous_date
+    end
+    @previous_date = @previous_date+1
+    if(!@end_date and @previous_date <= @end_date)
+      return @previous_date
+    end
+    return nil
   end
 end
 

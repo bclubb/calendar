@@ -24,23 +24,35 @@ describe "All Events", :shared => true do
     @event.next_date.should == @start_date
   end
   
-  it "should be able to return the next dates" do
-    pending
-  end
-  
-  it "should stop returning dates when the end date is reached" do
-    pending
-  end
-  
 end
 
 describe "A Daily Event" do
   before(:each) do
     setup_test
     @event.extend Daily
+    @expected_offset = 1
   end
   
   it_should_behave_like "All Events"
+  
+  it "should be able to return the next dates" do
+    @event.next_date
+    @event.next_date.should == @start_date+1
+    @event.next_date.should == @start_date+2
+  end
+  
+  it "should stop returning dates when the end date is reached" do
+    @event.end_date = @start_date+1
+    @event.next_date
+    @event.next_date
+    @event.next_date.should be nil
+  end
+  
+  it "should return the end date as a valid date" do
+    @event.end_date = @start_date+1
+    @event.next_date
+    @event.next_date.should == @start_date+1
+  end
   
   it "should repeat every day until the end is reached" do
     pending
