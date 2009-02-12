@@ -6,7 +6,7 @@ class Event
   attr_reader :start_date
   attr_accessor :end_date
   
-  def initialize(name, start_date, end_date=Date.today<<24)
+  def initialize(name, start_date, end_date=Date.today>>24)
     @name = name
     @start_date = start_date
     @end_date = end_date
