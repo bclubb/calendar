@@ -30,14 +30,13 @@ describe "A Daily Event" do
   before(:each) do
     setup_test
     @event.extend Daily
-    @expected_offset = 1
   end
   
   it_should_behave_like "All Events"
   
   it "should be able to return the next dates" do
     @event.next_date
-    @event.next_date.should == @start_date+1
+    @event.next_date
     @event.next_date.should == @start_date+2
   end
   

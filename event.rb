@@ -20,10 +20,10 @@ module Daily
       return @previous_date
     end
     @previous_date = @previous_date+1
-    if(!@end_date and @previous_date <= @end_date)
-      return @previous_date
+    if(@end_date and (@previous_date > @end_date))
+      return nil
     end
-    return nil
+    return @previous_date
   end
 end
 
