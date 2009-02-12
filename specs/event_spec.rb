@@ -1,5 +1,5 @@
 # spec/event_spec.rb
-require 'Event/event'
+require 'event'
 require 'time'
 
 describe "All Events", :shared => true do

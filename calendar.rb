@@ -1,5 +1,5 @@
 # calendar.rb
-require 'Event/event'
+require 'event'
 
 class Calendar
   attr_reader :events
