@@ -88,7 +88,11 @@ module Monthly
 end
 
 module Yearly
-  def next_date(previous_date)
+  def next_date()
+    if(!@previous_date)
+      @previous_date = @start_date
+      return @previous_date
+    end
     return previous_date<<12
   end
 end
