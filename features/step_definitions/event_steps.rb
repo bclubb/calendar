@@ -20,8 +20,8 @@ When /I ask for the next date (\d+) time[s]?/ do |number_of_days|
   end
 end
  
-Then /the result should be (\w+)/ do |result|
-  case result
+Then /the result should be (\w+)/ do |day|
+  case day
     when "today"
       @result.should == Date.today
     when "tomorrow"
